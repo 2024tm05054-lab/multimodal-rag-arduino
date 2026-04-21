@@ -1,2 +1,19 @@
-# multimodal-rag-arduino
-Multimodal RAG system using FastAPI for Arduino equipment manual
+
+# Multimodal RAG System – Arduino Equipment Manual
+
+## Problem Statement
+In academic environments such as Atal Tinkering Labs (ATL) and engineering institutions, students and instructors frequently work with equipment manuals that contain detailed technical information about hardware platforms like Arduino boards. These manuals typically include descriptive text, technical specifications in tabular format, and diagrams illustrating board components and connections. While these documents are essential for learning and experimentation, extracting specific information from them is often time-consuming and inefficient.
+
+The core problem lies in the difficulty of querying multimodal PDF documents effectively. For example, a student may want to quickly understand the specifications of an Arduino UNO, compare it with an Arduino Nano, or identify the function of specific pins shown in a diagram. However, traditional document navigation requires manually scrolling through multiple pages, interpreting tables, and visually analyzing images. Keyword-based search methods are insufficient because they fail to capture contextual meaning and cannot interpret structured tables or visual diagrams.
+
+The challenge becomes more significant due to the multimodal nature of the content. Equipment manuals such as the ATL Arduino Manual contain a mix of textual explanations, structured specification tables (e.g., voltage, memory, pin count), and visual diagrams of board layouts. Tables often hold critical numerical data, while images provide spatial understanding of components. Conventional question-answering systems that rely only on text extraction ignore these modalities, leading to incomplete or inaccurate responses.
+
+Additionally, domain-specific terminology such as “microcontroller,” “analog pins,” “PWM output,” and “bootloader memory” requires contextual understanding. Students who are beginners may not know the exact keywords to search for, making traditional search even less effective. This creates a gap between available information and its practical usability in learning and experimentation.
+
+A Multimodal Retrieval-Augmented Generation (RAG) system is an effective solution to this problem. RAG combines semantic search with generative AI to retrieve relevant information from documents and generate context-aware answers. By parsing the equipment manual into different modalities—text, tables, and images—and converting them into vector embeddings, the system can perform similarity-based retrieval. Furthermore, images can be processed using a Vision Language Model (VLM) to generate descriptive summaries, enabling them to be indexed alongside text and tables.
+
+This approach provides several advantages over traditional methods. Unlike keyword search, semantic retrieval understands the meaning behind queries, allowing users to ask natural language questions such as “What is the operating voltage of Arduino UNO?” or “How many digital pins are available in Arduino Mega?” The system retrieves the most relevant chunks regardless of whether the answer is in text, table, or image format. The generative model then synthesizes this information into a coherent response while grounding it in the source document.
+
+The expected outcome of this system is to enable students, educators, and hobbyists to interact with equipment manuals more efficiently. Users should be able to upload a multimodal PDF and query it using natural language. The system should return accurate answers along with references such as page numbers and content type (text, table, or image). It should also be capable of answering comparative questions (e.g., differences between Arduino UNO and Nano) and interpret visual diagrams through generated summaries.
+
+Ultimately, this system will enhance the learning experience by reducing the time required to locate information, improving comprehension of technical content, and enabling interactive exploration of engineering documents. It demonstrates how multimodal RAG systems can bridge the gap between static documentation and intelligent, user-friendly knowledge retrieval.
