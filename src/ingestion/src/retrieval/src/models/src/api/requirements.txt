@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+langchain
+faiss-cpu
+pymupdf
+python-dotenv
