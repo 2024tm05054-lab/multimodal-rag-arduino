@@ -2,3 +2,7 @@ fastapi
 uvicorn
 pymupdf
 numpy
+faiss-cpu
+sentence-transformers
+python-dotenv
+pillow
