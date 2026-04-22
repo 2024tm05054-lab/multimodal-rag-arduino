@@ -17,3 +17,40 @@ This approach provides several advantages over traditional methods. Unlike keywo
 The expected outcome of this system is to enable students, educators, and hobbyists to interact with equipment manuals more efficiently. Users should be able to upload a multimodal PDF and query it using natural language. The system should return accurate answers along with references such as page numbers and content type (text, table, or image). It should also be capable of answering comparative questions (e.g., differences between Arduino UNO and Nano) and interpret visual diagrams through generated summaries.
 
 Ultimately, this system will enhance the learning experience by reducing the time required to locate information, improving comprehension of technical content, and enabling interactive exploration of engineering documents. It demonstrates how multimodal RAG systems can bridge the gap between static documentation and intelligent, user-friendly knowledge retrieval.
+## How to Run
+
+1. Install dependencies:
+pip install -r requirements.txt
+
+2. Start server:
+uvicorn main:app --reload
+
+3. Open in browser:
+http://127.0.0.1:8000/docs
+
+
+## API Endpoints
+
+- GET /health → Check server status  
+- POST /ingest → Load PDF into system  
+- POST /query → Ask questions  
+
+
+## Project Structure
+
+src/
+  ingestion/parser.py → PDF parsing  
+  retrieval/vector_store.py → similarity search  
+  models/llm.py → answer generation  
+  api/routes.py → API endpoints  
+
+sample_documents/ → input PDF  
+main.py → entry point  
+
+
+## Features
+
+- Multimodal PDF processing  
+- Semantic search  
+- Retrieval-Augmented Generation (RAG)  
+- FastAPI backend  
