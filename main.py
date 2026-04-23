@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-from api.routes import router   
+from src.api.routes import router   # ✅ USE src
 
 app = FastAPI()
-
 app.include_router(router)
