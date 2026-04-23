@@ -2,9 +2,10 @@ from fastapi import APIRouter, UploadFile, File
 import os
 import time
 
-from src.ingestion.parser import extract_text_from_pdf
-from src.retrieval.vector_store import VectorStore
-from src.models.llm import generate_answer
+# ✅ FIXED IMPORTS (NO src.)
+from ingestion.parser import extract_text_from_pdf
+from retrieval.vector_store import VectorStore
+from models.llm import generate_answer
 
 router = APIRouter()
 
@@ -57,7 +58,7 @@ def ingest(file: UploadFile = File(...)):
         "Table: Arduino UNO Voltage = 5V, Digital Pins = 14"
     ]
 
-    # IMAGE CHUNKS (simulated VLM output)
+    # IMAGE CHUNKS (simulated)
     image_chunks = [
         "Image: Arduino board diagram showing pin layout and microcontroller"
     ]
@@ -87,7 +88,6 @@ def ingest(file: UploadFile = File(...)):
 # =========================
 @router.post("/query")
 def query(q: str):
-    # check if any document is indexed
     if len(vector_store.texts) == 0:
         return {"error": "No documents indexed. Please run /ingest first."}
 
@@ -97,7 +97,7 @@ def query(q: str):
     # generate answer
     answer = generate_answer(q, results)
 
-    # prepare sources (VERY IMPORTANT FOR MARKS)
+    # prepare sources
     sources = []
     for r in results:
         chunk_type = "text"
