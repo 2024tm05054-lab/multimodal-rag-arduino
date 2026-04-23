@@ -1,26 +1,8 @@
-import numpy as np
+def search(self, query):
+    results = []
 
-class VectorStore:
-    def __init__(self):
-        self.texts = []
-        self.vectors = []
+    for text in self.texts:
+        if any(word in text.lower() for word in query.lower().split()):
+            results.append(text)
 
-    def embed(self, text):
-        # simple fake embedding (for demo)
-        return np.array([len(text)])
-
-    def add_documents(self, texts):
-        for t in texts:
-            self.texts.append(t)
-            self.vectors.append(self.embed(t))
-
-    def search(self, query, top_k=3):
-        query_vec = self.embed(query)
-
-        scores = []
-        for i, vec in enumerate(self.vectors):
-            score = np.dot(query_vec, vec)
-            scores.append((score, self.texts[i]))
-
-        scores.sort(reverse=True, key=lambda x: x[0])
-        return [t[1] for t in scores[:top_k]]
+    return results[:3]
