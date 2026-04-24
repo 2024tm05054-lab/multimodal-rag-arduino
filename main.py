@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from src.api.routes import router   # <-- IMPORTANT
+from src.api.routes import router   
 
 app = FastAPI(
     title="Multimodal RAG API",
@@ -7,5 +7,5 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-app.include_router(router)   # <-- MUST ADD
+app.include_router(router)   
 
